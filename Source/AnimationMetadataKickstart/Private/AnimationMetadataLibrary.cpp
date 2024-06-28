@@ -17,6 +17,11 @@ namespace AnimMetaDataUtils
 		Result.Reset(Assets.Num());
 		for (UAnimationAsset* Asset : Assets)
 		{
+			if(!Asset)
+			{
+				continue;
+			}
+			
 			for (UAnimMetaData* MetaData : Asset->GetMetaData())
 			{
 				if (MetaData->Implements<UInterfaceClass>() && Predicate(MetaData))
