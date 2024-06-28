@@ -1,0 +1,22 @@
+﻿{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "AnimationMetadataKickstart",
+	"Description": "A kickstart to unreals animation metadata",
+	"Category": "Other",
+	"CreatedBy": "Aaron Kemner",
+	"CreatedByURL": "www.aaronkemner.com",
+	"DocsURL": "",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "AnimationMetadataKickstart",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
