@@ -102,6 +102,22 @@ TArray<UAnimationAsset*> UAnimationMetadataLibrary::FilterAssetsByTagMetaData(
 	return Result;
 }
 
+TArray<UAnimationAsset*> UAnimationMetadataLibrary::FilterAssetsByContainerTagMetaData(
+	const TArray<UAnimationAsset*>& Assets, const FGameplayTagContainer TagsToMatch)
+{
+	TArray<UAnimationAsset*> Result;
+
+	AnimMetaDataUtils::FilterAnimationAssetsByPredicate<UAnimMetaDataTagProvider>(
+		Assets,
+		[&TagsToMatch](UAnimMetaData* MetaData)
+		{
+			return TagsToMatch.HasTag(IAnimMetaDataTagProvider::Execute_GetMetaDataTag(MetaData));
+		},
+		Result);
+
+	return Result;
+}
+
 TArray<UAnimationAsset*> UAnimationMetadataLibrary::FilterAssetsByNameMetaData(
 	const TArray<UAnimationAsset*>& Assets, const FName NameToMatch)
 {

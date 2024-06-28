@@ -16,19 +16,33 @@ class ANIMATIONMETADATAKICKSTART_API UAnimationMetadataLibrary : public UBluepri
 	GENERATED_BODY()
 public:
 
+	/** Get all AnimMetaData on the AnimationAsset. */
 	UFUNCTION(BlueprintCallable, Category = "AnimMetaData", DisplayName = "Get Asset AnimMetaData")
 	static TArray<UAnimMetaData*> GetAssetAnimMetaData(const UAnimationAsset* Asset);
-	
-	UFUNCTION(BlueprintCallable, Category = "AnimMetaData", DisplayName = "Get Asset AnimMetaData by Tag")
+
+	/** Get all AnimMetaData on the Asset that matches the TagToMatch.
+	 * Uses the result of GetMetaDataTag from the AnimMetaDataTagProvider Interface to check against the TagToMatch. */
+	UFUNCTION(BlueprintCallable,  Category = "AnimMetaData", DisplayName = "Get Asset AnimMetaData by Tag", meta=(BlueprintThreadsafe))
 	static TArray<UAnimMetaData*> GetAssetAnimMetaDataByTag(const UAnimationAsset* Asset, const FGameplayTag TagToMatch);
 
-	UFUNCTION(BlueprintCallable, Category = "AnimMetaData", DisplayName = "Get Asset AnimMetaData by Name")
+	/** Get all AnimMetaData on the Asset that matches the NameToMatch.
+	 * Uses the result of GetMetaDataName from the AnimMetaDataNameProvider Interface to check against the NameToMatch. */
+	UFUNCTION(BlueprintCallable, Category = "AnimMetaData", DisplayName = "Get Asset AnimMetaData by Name", meta=(BlueprintThreadsafe))
 	static TArray<UAnimMetaData*> GetAssetAnimMetaDataByName(const UAnimationAsset* Asset, const FName NameToMatch);
 
-	UFUNCTION(BlueprintCallable, Category = "AnimMetaData", DisplayName = "Filter Assets by TagMetaData")
+	/** Get all animation assets that have at least one AnimMetaData instance that matches the TagToMatch.
+	 * Uses the result of GetMetaDataTag from the AnimMetaDataTagProvider Interface to check against the TagToMatch. */
+	UFUNCTION(BlueprintCallable, Category = "AnimMetaData", DisplayName = "Filter Assets by TagMetaData", meta=(BlueprintThreadsafe))
 	static TArray<UAnimationAsset*> FilterAssetsByTagMetaData(const TArray<UAnimationAsset*>& Assets, const FGameplayTag TagToMatch);
 
-	UFUNCTION(BlueprintCallable, Category = "AnimMetaData", DisplayName = "Filter Assets by NameMetaData")
+	/** Get all animation assets that have at least one AnimMetaData instance that matches any of the TagsToMatch.
+	 * Uses the result of GetMetaDataTag from the AnimMetaDataTagProvider Interface to check against the Tags in TagsToMatch. */
+	UFUNCTION(BlueprintCallable, Category = "AnimMetaData", DisplayName = "Filter Assets by TagMetaData using Container", meta=(BlueprintThreadsafe))
+	static TArray<UAnimationAsset*> FilterAssetsByContainerTagMetaData(const TArray<UAnimationAsset*>& Assets, const FGameplayTagContainer TagsToMatch);
+
+	/** Get all animation assets that have at least one AnimMetaData instance that matches the NameToMatch.
+	 * Uses the result of GetMetaDataName from the AnimMetaDataNameProvider Interface to check against the NameToMatch. */
+	UFUNCTION(BlueprintCallable, Category = "AnimMetaData", DisplayName = "Filter Assets by NameMetaData", meta=(BlueprintThreadsafe))
 	static TArray<UAnimationAsset*> FilterAssetsByNameMetaData(const TArray<UAnimationAsset*>& Assets, const FName NameToMatch);
 	
 };
