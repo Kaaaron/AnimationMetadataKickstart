@@ -39,5 +39,9 @@ You could also create your own classes derived from the classes of this plugin t
 
 Really it is meant as a generic starting point to get you started and provide some generic but useful functionality that I think might be applicable if you are willing to integrate AnimMetaData into your workflow.
 
-
+# Versions and Platforms
+## Engine Version
 Created and tested with UE5.4, but likely works with close other versions just as well.
+
+## Platforms
+By default only Win64 is whitelisted. This is purely for my convenience. The code does not really contain anything special though, so I would expect it to work on other platforms as well.
