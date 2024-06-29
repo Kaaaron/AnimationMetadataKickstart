@@ -6,6 +6,7 @@
 #include "AnimMetaDataNameProvider.h"
 #include "AnimMetaDataTagProvider.h"
 #include "Animation/AnimMetaData.h"
+#include "Animation/AnimationAsset.h"
 
 namespace AnimMetaDataUtils
 {
